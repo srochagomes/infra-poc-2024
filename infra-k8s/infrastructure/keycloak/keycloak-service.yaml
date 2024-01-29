@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: feriaz-auth-env
+  labels:
+    app: keycloak-app
+    version: 0.0.1
+  name: keycloak-service
+  annotations:
+    type: service
+    domain: keycloak
+    business: security
+  
+spec:
+  type: LoadBalancer
+  selector:
+    app: keycloak-app
+  ports:
+    - name: http-porta-web
+      protocol: TCP
+      port: 8080
+      targetPort: 8080  
+  sessionAffinity: "ClientIP"

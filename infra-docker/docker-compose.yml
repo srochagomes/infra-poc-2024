@@ -1,0 +1,44 @@
+version: "3.9"
+services:
+  rabbitmq:
+    image: amd64/rabbitmq:3.13.0-rc.4-management-alpine
+    container_name: 'rabbitmq'
+    environment:      
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=rabbitmq
+    ports:
+        - 5672:5672
+        - 15672:15672
+    volumes:
+        - ./data/rabbitmq/data/:/var/lib/rabbitmq/
+        - ./data/rabbitmq/log/:/var/log/rabbitmq
+    networks:
+        - internal-net
+  db:
+    depends_on: 
+      - rabbitmq
+    image: amd64/postgres:16.1    
+    networks:
+      - internal-net
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:      
+      - POSTGRES_DB=db
+      - POSTGRES_USER=postgres      
+      - POSTGRES_PASSWORD=admin
+    ports:
+      - 5432:5432
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+     
+volumes:
+  postgres_data:
+      driver: local
+        
+networks:
+  internal-net:
+    driver: bridge
+        

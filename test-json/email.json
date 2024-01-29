@@ -1,0 +1,16 @@
+{
+    
+    "type":"EMAIL",
+    "ceatedAt":"date",
+    "specification": {
+        "domainType": "ACCOUNT_CONFIRMATION",        
+        "accountId": "ab596395-c449-4628-bc8a-170080e147dc",
+        "detail": {
+            "emailTo": "srochg@gmail.com",
+            "nameTo": "Sérgio",
+            "subject": "Envio de email Teste",  
+            "urlConfirmation":"http://localhost:3000"
+        }        
+    }    
+
+}

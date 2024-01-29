@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: feriaz-auth-env
+  labels:
+    description: authorize-authentication
+  annotations:
+    type: namespace
+    domain: authorize
