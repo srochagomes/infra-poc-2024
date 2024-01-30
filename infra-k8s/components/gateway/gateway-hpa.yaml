@@ -2,11 +2,11 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   namespace: feriaz-app-env
-  name: auth-server-service-hpa
+  name: gateway-service-hpa
   annotations:
     type: app
-    domain: auth-server
-    business: Security
+    domain: Gateway
+    business: Gateway
     prometheus.io/scrape: "true"
     prometheus.io/path: "/metrics"
     prometheus.io/port: "8080"
@@ -15,7 +15,7 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: auth-server-application
+    name: gateway-application
   minReplicas: 2
   maxReplicas: 4
   metrics:

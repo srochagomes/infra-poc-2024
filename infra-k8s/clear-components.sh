@@ -18,6 +18,7 @@ RESOURCE_KEYCLOAK_STATEFUL=$DIR_KEYCLOAK"/keycloak-statefull.yaml"
 RESOURCE_KEYCLOAK_SERVICE=$DIR_KEYCLOAK"/keycloak-service.yaml"
 RESOURCE_KEYCLOAK_HPA=$DIR_KEYCLOAK"/keycloak-hpa.yaml"
 RESOURCE_AUTHBASE=$RESOURCE_COMPONENTS/auth-server
+RESOURCE_GATEWAY=$RESOURCE_COMPONENTS/gateway
 
 
 apply() {
@@ -36,7 +37,10 @@ apply() {
 
 unInstall(){  
   apply "kubectl delete -f $RESOURCE_AUTHBASE"
-  echo "------removing keycloak--------"
+  echo "------removing authbase--------"
+  apply "kubectl delete -f $RESOURCE_GATEWAY"
+  echo "------removing gateway--------"
+  
 }
 
 unInstall

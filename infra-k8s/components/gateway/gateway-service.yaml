@@ -3,21 +3,22 @@ kind: Service
 metadata:
   namespace: feriaz-app-env 
   labels:
-    app: auth-server-app    
-  name: auth-server-service
-
+    app: gateway-app    
+    
+  name: gateway-service
   annotations:
     type: service
-    domain: Authorizer
-    business: Security
+    domain: Gateway
+    business: Gateway
     prometheus.io/scrape: "true"
     prometheus.io/path: "/metrics"
     prometheus.io/port: "8080"
+
   
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   selector:
-    app: auth-server-app
+    app: gateway-app
   ports:
     - name: http-porta-web
       protocol: TCP

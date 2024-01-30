@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: feriaz-app-env
+  labels:
+    app: gateway-app-deployment    
+
+  name: gateway-application
+  annotations:
+    type: app
+    domain: Gateway
+    business: Gateway
+    prometheus.io/scrape: "true"
+    prometheus.io/path: "/metrics"
+    prometheus.io/port: "8080"
+
+spec:
+  selector:
+    matchLabels:
+      app: gateway-app
+  template:
+    metadata:
+      labels:
+        app: gateway-app
+        version: v1
+    spec:
+      containers:
+          - name: gateway-application-container
+            image: srochg/api-gateway:0.0.14
+            resources:
+              limits:
+                cpu: "1"
+                memory: "1Gi"
+              requests:
+                cpu: "0.5"
+                memory: "512Mi"
+            envFrom:
+              - configMapRef:
+                  name: gateway-configmap
+            imagePullPolicy: Always
+            ports:
+              - containerPort: 8080
+            readinessProbe:
+              httpGet:
+                path: /_app-state/health
+                port: 8080
+              initialDelaySeconds: 20
+              periodSeconds: 10
+            startupProbe:
+              httpGet:
+                path: /_app-state/health
+                port: 8080
+              periodSeconds: 10
+              failureThreshold: 30
+              successThreshold: 1
+
+            livenessProbe:
+              httpGet:
+                path: /_app-state/health 
+                port: 8080
+
+              initialDelaySeconds: 30
+              periodSeconds: 10
+              failureThreshold: 5
+              timeoutSeconds: 5
+              successThreshold: 1
+              terminationGracePeriodSeconds: 30
+      restartPolicy: Always
