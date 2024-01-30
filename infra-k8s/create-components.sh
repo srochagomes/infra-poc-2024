@@ -5,6 +5,7 @@ NAMESPACE="app-env"
 RESOURCE_NAMESPACE="namespace/"
 RESOURCE_CONFIGMAP_AUTHBASE="config-map/auth-base-configmap.yaml"
 RESOURCE_CONFIGMAP_GATEWAY="config-map/gateway-configmap.yaml"
+RESOURCE_CONFIGMAP_ACCOUNT="config-map/account-configmap.yaml"
 RESOURCE_COMPONENTS="components/"
 DIR_INFRA="infrastructure"
 DIR_APP="application"
@@ -20,6 +21,7 @@ RESOURCE_KEYCLOAK_SERVICE=$DIR_KEYCLOAK"/keycloak-service.yaml"
 RESOURCE_KEYCLOAK_HPA=$DIR_KEYCLOAK"/keycloak-hpa.yaml"
 RESOURCE_AUTHBASE=$RESOURCE_COMPONENTS/auth-server
 RESOURCE_GATEWAY=$RESOURCE_COMPONENTS/gateway
+RESOURCE_ACCOUNT=$RESOURCE_COMPONENTS/account
 
 apply() {
   
@@ -40,13 +42,17 @@ echo "------Create config: $RESOURCE_CONFIGMAP"
 apply "kubectl apply -f $RESOURCE_CONFIGMAP_AUTHBASE"
 echo "------Create config: $RESOURCE_CONFIGMAP_GATEWAY"
 apply "kubectl apply -f $RESOURCE_CONFIGMAP_GATEWAY"
-
+echo "------Create config: $RESOURCE_CONFIGMAP_ACCOUNT"
+apply "kubectl apply -f $RESOURCE_CONFIGMAP_ACCOUNT"
 
 echo "------Create AUTHServer ------"
 apply "kubectl apply -f $RESOURCE_AUTHBASE"
 
 echo "------Create Gateway ------"
 apply "kubectl apply -f $RESOURCE_GATEWAY"
+
+echo "------Create Account ------"
+apply "kubectl apply -f $RESOURCE_ACCOUNT"
 
 
 
