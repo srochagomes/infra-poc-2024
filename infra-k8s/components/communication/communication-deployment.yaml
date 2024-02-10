@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
           - name: communication-application-container
-            image: srochg/communication:0.0.10
+            image: srochg/communication:0.0.15
             resources:
               limits:
                 cpu: "1"

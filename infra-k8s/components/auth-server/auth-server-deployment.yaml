@@ -65,6 +65,26 @@ spec:
                 secretKeyRef:
                   name: app-secret
                   key: SECRET_RABBIT_PWD
+            - name: ADM_KEYCLOAK_CLI_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: PROFILE_ADM_KEYCLOAK_CLI_SECRET
+            - name: ADM_KEYCLOAK_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: PROFILE_ADM_KEYCLOAK_SECRET
+            - name: ADM_KEYCLOAK_USER
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: PROFILE_ADM_KEYCLOAK_USER
+            - name: ADM_KEYCLOAK_PWD
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: PROFILE_ADM_KEYCLOAK_PWD
             envFrom:
               - configMapRef:
                   name: auth-base-configmap

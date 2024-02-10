@@ -8,6 +8,7 @@ RESOURCE_CONFIGMAP_COMMUNICATION="config-map/communication-configmap.yaml"
 RESOURCE_COMPONENTS="components/"
 DIR_INFRA="infrastructure"
 DIR_APP="application"
+DIR_SECRET=$DIR_INFRA"/secret"
 RESOURCE_LIMITS=$DIR_INFRA"/limits/"
 RESOURCE_DATABASE=$DIR_INFRA"/database"
 RESOURCE_AUTHBASE=$RESOURCE_COMPONENTS/auth-server
@@ -30,6 +31,8 @@ apply() {
 }
 
 
+echo "------Create secret: $DIR_SECRET"
+apply "kubectl apply -f $DIR_SECRET"
 echo "------Create config: $RESOURCE_CONFIGMAP"
 apply "kubectl apply -f $RESOURCE_CONFIGMAP_AUTHBASE"
 echo "------Create config: $RESOURCE_CONFIGMAP_GATEWAY"

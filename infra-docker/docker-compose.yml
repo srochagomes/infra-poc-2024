@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   rabbitmq:
-    image: amd64/rabbitmq:3.13.0-rc.4-management-alpine
+    image: rabbitmq:3.13.0-rc.4-management-alpine
     container_name: 'rabbitmq'
     environment:      
       - RABBITMQ_DEFAULT_USER=admin
@@ -10,22 +10,23 @@ services:
         - 5672:5672
         - 15672:15672
     volumes:
-        - ./data/rabbitmq/data/:/var/lib/rabbitmq/
-        - ./data/rabbitmq/log/:/var/log/rabbitmq
+        - rabbitmq_data:/var/lib/rabbitmq/
+        - rabbitmq_log:/var/log/rabbitmq
     networks:
         - internal-net
+
   db:
     depends_on: 
       - rabbitmq
-    image: amd64/postgres:16.1    
+    image: postgres:16.1    
     networks:
       - internal-net
     volumes:
-      - ./data/db:/var/lib/postgresql/data
-    environment:      
-      - POSTGRES_DB=db
+      - db_data:/var/lib/postgresql/data
+    environment:  
+      - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres      
-      - POSTGRES_PASSWORD=admin
+      - POSTGRES_PASSWORD=admin      
     ports:
       - 5432:5432
     healthcheck:
@@ -35,10 +36,10 @@ services:
       retries: 5
      
 volumes:
-  postgres_data:
-      driver: local
-        
+  rabbitmq_data:
+  rabbitmq_log:
+  db_data:
+
 networks:
   internal-net:
     driver: bridge
-        
