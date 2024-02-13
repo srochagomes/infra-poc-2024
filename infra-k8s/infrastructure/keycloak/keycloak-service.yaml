@@ -10,6 +10,9 @@ metadata:
     type: service
     domain: keycloak
     business: security
+    prometheus.io/scrape: "true"
+    prometheus.io/path: "/metrics"
+    prometheus.io/port: "8080"
   
 spec:
   type: LoadBalancer

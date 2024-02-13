@@ -8,9 +8,9 @@ data:
   KC_DB_USERNAME: ${POSTGRES_USER}
   KC_DB_PASSWORD: ${POSTGRES_PASSWORD}
   KC_DB_SCHEMA: public
-  KC_DB_URL: 'jdbc:postgresql://192.168.122.1:5432/keycloakdb'
+  KC_DB_URL: 'jdbc:postgresql://192.168.15.103:5432/keycloakdb'
   KC_DB_URL_DATABASE: keycloakdb
-  KC_DB_URL_HOST: '192.168.122.1' 
+  KC_DB_URL_HOST: '192.168.15.103' 
   KC_DB_URL_PORT: '5432'
   KC_TRANSACTION_XA_ENABLED: 'false'
   KC_METRICS_ENABLED: 'true'

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-
+sudo docker-compose down
 sudo docker stop $(docker ps -a -q)
 sudo docker container prune -f
 # Limpa todas as imagens Docker

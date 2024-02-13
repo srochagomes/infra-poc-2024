@@ -10,8 +10,8 @@ services:
         - 5672:5672
         - 15672:15672
     volumes:
-        - rabbitmq_data:/var/lib/rabbitmq/
-        - rabbitmq_log:/var/log/rabbitmq
+        - ./data/rabbitmq/rabbitmq_data:/var/lib/rabbitmq/
+        - ./data/rabbitmq/rabbitmq_log:/var/log/rabbitmq
     networks:
         - internal-net
 
@@ -22,7 +22,7 @@ services:
     networks:
       - internal-net
     volumes:
-      - db_data:/var/lib/postgresql/data
+      - ./data/postgres/db_data:/var/lib/postgresql/data
     environment:  
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres      
@@ -35,11 +35,6 @@ services:
       timeout: 5s
       retries: 5
      
-volumes:
-  rabbitmq_data:
-  rabbitmq_log:
-  db_data:
-
 networks:
   internal-net:
     driver: bridge

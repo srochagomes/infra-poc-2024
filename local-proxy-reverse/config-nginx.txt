@@ -65,25 +65,25 @@ stream {
     server {
         listen 127.0.0.1:9877;
         #TCP traffic will be forwarded to the specified server keycloak
-        proxy_pass 192.168.39.193:31555; 
+        proxy_pass 192.168.39.193:32256; 
     }
 
     server {
         listen 127.0.0.1:9876;
         #TCP traffic will be forwarded to the specified server apigateway
-        proxy_pass 192.168.39.193:32328;
+        proxy_pass 192.168.39.193:30442;
     }
 
     server {
         listen 192.168.15.103:9877;
         #TCP traffic will be forwarded to the specified server keycloak
-        proxy_pass 192.168.39.193:31555; 
+        proxy_pass 192.168.39.193:32256; 
     }
 
     server {
         listen 192.168.15.103:9876;
         #TCP traffic will be forwarded to the specified server apigateway
-        proxy_pass 192.168.39.193:32328;
+        proxy_pass 192.168.39.193:30442;
     }
 
 

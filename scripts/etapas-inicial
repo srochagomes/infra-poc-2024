@@ -16,7 +16,7 @@ criar o client feriaz-portal
 criar o usuario de api admin para operações no keycloak
 atualizar o secret gerado nos arquivos de variaveis
 criar os components
-inserir no banco Auth a linha { insert into TB_APPLICATION_DATA values ('feriaz-portal','http://187.74.123.203:3000')}
+inserir no banco Auth a linha { insert into TB_APPLICATION_DATA values ('feriaz-portal','http://feriaz-dev.ddns.net:3000')}
 Validar o proxy-reverse com nginx e as conexoes internas e suas portas
 validar o IP externo
 Validar e habilitar o refresh token
