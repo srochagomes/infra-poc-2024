@@ -71,7 +71,7 @@ stream {
     server {
         listen 127.0.0.1:9876;
         #TCP traffic will be forwarded to the specified server apigateway
-        proxy_pass 192.168.39.193:30442;
+        proxy_pass 192.168.39.193:31938;
     }
 
     server {
@@ -83,7 +83,7 @@ stream {
     server {
         listen 192.168.15.103:9876;
         #TCP traffic will be forwarded to the specified server apigateway
-        proxy_pass 192.168.39.193:30442;
+        proxy_pass 192.168.39.193:31938;
     }
 
 

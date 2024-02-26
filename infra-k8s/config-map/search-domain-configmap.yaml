@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: feriaz-app-env
+  name: search-domail-configmap
+data:  
+  PORT: '8080'
+  PROFILE: prod
+  ELASTICSEARCH_ADDRESS: 192.168.15.103:9200

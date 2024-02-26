@@ -29,11 +29,11 @@ spec:
             image: srochg/auth-server:0.0.32
             resources:
               limits:
-                cpu: "1"
+                cpu: "200m"
                 memory: "1Gi"
               requests:
-                cpu: "0.5"
-                memory: "512Mi"
+                cpu: "100m"
+                memory: "512Mi"            
             env:
             - name: APP_CREDENTIAL_ID
               valueFrom:

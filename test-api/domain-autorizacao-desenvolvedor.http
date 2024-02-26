@@ -1,10 +1,10 @@
-POST http://192.168.39.209:30941/authentication/v1/identifications/token
+POST http://feriaz-dev.ddns.net:9876/authentication/v1/identifications/token
 content-type: application/json
 
 {
     "grant_type": "password",
     "client_id": "feriaz-portal",
-    "client_secret": "9AkTo7IxVmIfmgUvCWjEskjPGN4JzwjN",
+    "client_secret": "vRhzVPIcGk3P6m1OC6X5KMdtF2h47xs2",
     "username": "admin-api",
     "password": "api-access",
     "scope": "roles email openid"

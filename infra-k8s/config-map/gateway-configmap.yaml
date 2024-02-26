@@ -8,6 +8,7 @@ data:
   PORT: '8080'
   KEYCLOAK_ADDRESS: 'feriaz-dev.ddns.net:9877'
   AUTH_BASE_ADDRESS: 'auth-server-service.feriaz-app-env.svc.cluster.local:8080'
+  SEARCH_DOMAIN_ADDRESS: 'search-domain-service.feriaz-app-env.svc.cluster.local:8080'
   ACCOUNT_ADDRESS: 'account-service.feriaz-app-env.svc.cluster.local:8080'
   GATEWAY_ALLOW_ORING: http://localhost:3000, http://192.168.15.103:3000, http://feriaz-dev.ddns.net:3000  
   KEYCLOAK_HELM: feriaz

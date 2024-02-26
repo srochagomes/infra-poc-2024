@@ -18,7 +18,7 @@ services:
   db:
     depends_on: 
       - rabbitmq
-    image: postgres:16.1    
+    image: amd64/postgres:16.2-alpine3.19
     networks:
       - internal-net
     volumes:
@@ -35,6 +35,38 @@ services:
       timeout: 5s
       retries: 5
      
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.15.2
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms3g -Xmx3g"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./elasticsearch/data:/usr/share/elasticsearch/data
+      - ./elasticsearch-valida-plugin.sh:/usr/local/bin/elasticsearch-valida-plugin.sh      
+    command: /usr/local/bin/elasticsearch-valida-plugin.sh
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    networks:
+      - internal-net
+  kibana:
+    depends_on: 
+      - elasticsearch
+    image: docker.elastic.co/kibana/kibana:7.15.2
+    container_name: kibana
+    environment:
+      - "ELASTICSEARCH_URL=http://elasticsearch:9200"
+    ports:
+      - "5601:5601"
+    networks:
+      - internal-net
+
 networks:
   internal-net:
     driver: bridge

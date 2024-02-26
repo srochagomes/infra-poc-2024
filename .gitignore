@@ -2,6 +2,7 @@ target/
 logs/
 .idea/
 infra-docker/data
+infra-docker/elasticsearch/data/**
 target/**
 
 !.mvn/wrapper/maven-wrapper.jar
