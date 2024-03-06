@@ -1,10 +1,10 @@
-POST http://localhost:8885/authentication/v1/identifications/token
+POST http://feriaz-dev.ddns.net:9876/authentication/v1/identifications/token
 content-type: application/json
 
 {
     "grant_type": "client_credentials",
     "client_id": "feriaz-portal",
-    "client_secret": "PD09DGKYdKKdfddi3t0F1stzqeku1wnF",
+    "client_secret": "vRhzVPIcGk3P6m1OC6X5KMdtF2h47xs2",
     "scope": "roles openid"
 
 }
