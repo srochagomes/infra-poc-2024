@@ -61,7 +61,7 @@ echo "------Create Communication ------"
 apply "kubectl replace -f $RESOURCE_COMMUNICATION"
 
 echo "------Create Search Domain ------"
-apply "kubectl apply -f $RESOURCE_SEARCH_DOMAIN"
+apply "kubectl replace -f $RESOURCE_SEARCH_DOMAIN"
 
 
 

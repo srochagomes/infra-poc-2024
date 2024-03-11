@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
           - name: search-domain-application-container
-            image: srochg/search-domain:0.0.4            
+            image: srochg/search-domain:0.0.7
             resources:
               limits:
                 cpu: "200m"
